@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180522130010) do
+ActiveRecord::Schema.define(version: 20180522130616) do
+
+  create_table "subscription_items", force: :cascade do |t|
+    t.string "type"
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "token", null: false

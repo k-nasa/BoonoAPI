@@ -1,0 +1,2 @@
+class SubscriptionItem < ApplicationRecord
+end
