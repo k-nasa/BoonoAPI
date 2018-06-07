@@ -1,6 +1,7 @@
 class SubscriptionItemsController < ApplicationController
   def create
-    sub_item = SubscriptionItem.new(subscription_items_params)
+    user = User.find_by(token: params[:token])
+    sub_item = user.subscription_items.new(subscription_items_params)
     sub_item.save!
     render json: 'success!', status: :created
   rescue

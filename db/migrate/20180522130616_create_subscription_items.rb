@@ -3,6 +3,7 @@ class CreateSubscriptionItems < ActiveRecord::Migration[5.1]
     create_table :subscription_items do |t|
       t.string :type
       t.text :content, null: false
+      t.integer :user_id, nill: false
 
       t.timestamps
     end

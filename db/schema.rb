@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20180522130616) do
   create_table "subscription_items", force: :cascade do |t|
     t.string "type"
     t.text "content", null: false
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
