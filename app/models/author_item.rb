@@ -1,0 +1,2 @@
+class AuthorItem < SubscriptionItem
+end

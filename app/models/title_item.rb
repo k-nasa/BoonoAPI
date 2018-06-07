@@ -1,0 +1,2 @@
+class TitleItem < SubscriptionItem
+end
