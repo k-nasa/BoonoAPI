@@ -10,6 +10,15 @@ class SubscriptionItemsController < ApplicationController
     render json: sub_items, status: :ok
   end
 
+  def destroy
+    sub_item = SubscriptionItem.find(params[:id])
+    sub_item.destroy!
+
+    render json: 'delete', status: :ok
+  rescue => e
+    render json: e, status: :internal_server_error
+  end
+
   def create
     user = User.find_by(token: params[:token])
     sub_item = user.subscription_items.new(content: params[:content], type: params[:type])
