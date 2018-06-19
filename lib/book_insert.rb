@@ -1,7 +1,6 @@
 require 'open-uri'
 
 module BookInsert
-
   # TODO いい感じに分割したい
   # https://calendar.gameiroiro.com/manga.php このサイトにのみ対応
   # 余裕があればアマゾンから取得する
