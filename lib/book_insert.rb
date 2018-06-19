@@ -32,10 +32,27 @@ module BookInsert
       publish_date = Date.new(year, month, i + 1)
 
       titles.zip(authors).each do |title, author|
-        book_list << { title: title, author: author, puslish_date: publish_date, image_url: 'soon...' } # TODO imageの取得
+        book_list << { title: title, author: author, publish_date: publish_date, image_url: 'soon...' } # TODO imageの取得
       end
     end
 
     book_list
+  end
+
+  # ３ヶ月分の発売予定を保存する
+  def save_three_month_books
+    date = Time.zone.today
+    urls = [
+      "https://calendar.gameiroiro.com/litenovel.php",
+      "https://calendar.gameiroiro.com/litenovel.php?year=#{(date >> 1).year}&month=#{(date >> 1).month}",
+      "https://calendar.gameiroiro.com/litenovel.php?year=#{(date >> 2).year}&month=#{(date >> 2).month}",
+      "https://calendar.gameiroiro.com/manga.php",
+      "https://calendar.gameiroiro.com/manga.php?year=#{(date >> 1).year}&month=#{(date >> 1).month}",
+      "https://calendar.gameiroiro.com/manga.php?year=#{(date >> 2).year}&month=#{(date >> 2).month}"
+    ]
+
+    urls.each do |url|
+      fetch_books(url).map { |book| Book.create!(book) }
+    end
   end
 end
