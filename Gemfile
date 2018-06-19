@@ -16,6 +16,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'shoulda-matchers'
 end
 
 group :development do
