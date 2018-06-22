@@ -11,6 +11,7 @@ gem 'sqlite3', group: :development
 gem 'pg', group: :production
 gem 'puma', '~> 3.7'
 gem 'amazon-ecs'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'rspec-rails'
