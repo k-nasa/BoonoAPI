@@ -41,11 +41,14 @@ GEM
     amazon-ecs (2.5.0)
       nokogiri (~> 1.4)
       ruby-hmac (~> 0.3)
+    andpush (0.2.0)
+      net-http-persistent (>= 3.0.0)
     arel (8.0.0)
     builder (3.2.3)
     byebug (10.0.2)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.2)
     crass (1.0.4)
     diff-lcs (1.3)
     dotenv (2.2.1)
@@ -76,6 +79,8 @@ GEM
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
+    net-http-persistent (3.0.0)
+      connection_pool (~> 2.2)
     nio4r (2.3.1)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
@@ -168,6 +173,7 @@ PLATFORMS
 
 DEPENDENCIES
   amazon-ecs
+  andpush
   byebug
   dotenv-rails
   factory_bot_rails

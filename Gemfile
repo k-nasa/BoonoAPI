@@ -14,6 +14,8 @@ gem 'puma', '~> 3.7'
 gem 'amazon-ecs'
 # 環境変数を管理するため
 gem 'dotenv-rails'
+# Firebase Messaging Apiを叩く
+gem 'andpush'
 
 group :development, :test do
   gem 'rspec-rails'
