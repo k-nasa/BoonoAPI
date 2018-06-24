@@ -5,4 +5,12 @@ class UsersController < ApplicationController
   rescue
     render json: 'error'
   end
+
+  def update
+    user = User.find_by(token: params[:token])
+    user.update!(device_token: params[:device_token])
+    render json: :ok
+  rescue => e
+    render json: e
+  end
 end
