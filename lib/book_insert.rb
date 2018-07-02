@@ -54,4 +54,7 @@ module BookInsert
       fetch_books(url).map { |book| Book.create(book) }
     end
   end
+
+  module_function :save_three_month_books
+  module_function :fetch_books
 end
