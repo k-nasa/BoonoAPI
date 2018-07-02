@@ -51,7 +51,7 @@ module BookInsert
     ]
 
     urls.each do |url|
-      fetch_books(url).map { |book| Book.create!(book) }
+      fetch_books(url).map { |book| Book.create(book) }
     end
   end
 end
