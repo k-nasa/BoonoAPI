@@ -13,7 +13,9 @@ class PushNotify
           body: "本日発売の本があります"
         }
       }
-      client.push(payload) if !!user.device_token
+      p user
+      responce = client.push(payload) if !!user.device_token
+      p response&.json
     end
   end
 end
