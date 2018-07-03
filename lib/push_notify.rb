@@ -15,7 +15,7 @@ class PushNotify
       }
       p user
       responce = client.push(payload) if !!user.device_token
-      p response&.json
+      p responce&.json
     end
   end
 end
