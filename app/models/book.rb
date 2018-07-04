@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-  has_many :notify_books
+  has_many :notify_books, dependent: :destroy
 
   validates :title, presence: true, uniqueness: { scope: :publish_date, message: '同じ本です' }
   validates :author, presence: true
