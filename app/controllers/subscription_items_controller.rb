@@ -14,7 +14,7 @@ class SubscriptionItemsController < ApplicationController
     sub_item = SubscriptionItem.find(params[:id])
     sub_item.destroy!
 
-    render json: 'delete', status: :ok
+    render json: 'success!', status: :ok
   rescue => e
     render json: e, status: :internal_server_error
   end
@@ -23,7 +23,7 @@ class SubscriptionItemsController < ApplicationController
     user = User.find_by(token: params[:token])
     sub_item = user.subscription_items.new(content: params[:content], type: params[:type])
     sub_item.save!
-    render json: 'success!', status: :created
+    render json: 'success!', status: :ok
   rescue => e
     render json: e, status: :internal_server_error
   end
