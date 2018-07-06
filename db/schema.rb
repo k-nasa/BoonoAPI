@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20180624033610) do
   end
 
   create_table "subscription_items", force: :cascade do |t|
+    t.integer "sub_id"
     t.string "type"
     t.text "content", null: false
     t.integer "user_id"
