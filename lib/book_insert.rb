@@ -20,6 +20,10 @@ module BookInsert
 
     book_list = []
     books_html.each_with_index do |book_html, i|
+      image_urls = book_html.search('div.product-image-left a img').map do |img_url|
+        img_url.attributes['src'].value
+      end
+
       titles = book_html.search('div.product-description-right a').map do |title_html|
         title_html.inner_text.strip
       end
@@ -30,8 +34,8 @@ module BookInsert
 
       publish_date = Date.new(year, month, i + 1)
 
-      titles.zip(authors).each do |title, author|
-        book_list << { title: title, author: author, publish_date: publish_date, image_url: 'soon...' } # TODO imageの取得
+      titles.zip(authors, image_urls).each do |title, author, image_url|
+        book_list << { title: title, author: author, publish_date: publish_date, image_url: image_url }
       end
     end
 
