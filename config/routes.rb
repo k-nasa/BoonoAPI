@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resource :subscription_items, only: %i(create destroy)
 
   get 'subscription_items/:token' => 'subscription_items#index'
-  delete 'subscription_items/:sub_id' => 'subscription_items#destroy'
+  delete 'subscription_items/:token/:sub_id' => 'subscription_items#destroy'
 
   get 'notify_books/:token' => 'notify_books#index'
 end

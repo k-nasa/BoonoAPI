@@ -11,7 +11,8 @@ class SubscriptionItemsController < ApplicationController
   end
 
   def destroy
-    sub_item = SubscriptionItem.find_by(sub_id: params[:sub_id])
+    user = User.find_by(token: params[:token])
+    sub_item = user.subscription_items.find_by(sub_id: params[:sub_id])
     sub_item.destroy!
 
     render json: 'success!', status: :ok
