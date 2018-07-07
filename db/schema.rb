@@ -24,9 +24,11 @@ ActiveRecord::Schema.define(version: 20180624033610) do
   create_table "notify_books", force: :cascade do |t|
     t.integer "book_id"
     t.integer "user_id"
+    t.integer "subscription_item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_notify_books_on_book_id"
+    t.index ["subscription_item_id"], name: "index_notify_books_on_subscription_item_id"
     t.index ["user_id"], name: "index_notify_books_on_user_id"
   end
 
