@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   delete 'subscription_items/:token/:sub_id' => 'subscription_items#destroy'
 
   get 'notify_books/:token' => 'notify_books#index'
+  delete 'notify_books/:id' => 'notify_books#destroy'
 end
