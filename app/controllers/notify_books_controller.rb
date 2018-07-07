@@ -8,4 +8,13 @@ class NotifyBooksController < ApplicationController
 
     render json: books, status: :ok
   end
+
+  def destroy
+    notify_book = NotifyBook.find(params[:id])
+    notify_book.destroy!
+
+    render json: 'success!', status: :ok
+  rescue => e
+    render json: e, status: :internal_server_error
+  end
 end
