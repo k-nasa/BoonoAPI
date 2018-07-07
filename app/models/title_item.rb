@@ -3,7 +3,7 @@ class TitleItem < SubscriptionItem
 
   def create_notify_book
     Book.all.each do |book|
-      user.notify_books.create(book: book) if book.title.include?(content)
+      user.notify_books.create(book: book, subscription_item: self) if book.title.include?(content)
     end
   end
 end
