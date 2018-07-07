@@ -9,11 +9,11 @@ class Book < ApplicationRecord
 
   def create_notify_book
     TitleItem.all.each do |sub_title|
-      sub_title.user.notify_books.create(book: self) if title.include?(sub_title.content)
+      sub_title.user.notify_books.create(book: self, subscription_item: sub_title) if title.include?(sub_title.content)
     end
 
     AuthorItem.all.each do |sub_author|
-      sub_author.user.notify_books.create(book: self) if author.include?(sub_author.content)
+      sub_author.user.notify_books.create(book: self, subscription_item: sub_author) if author.include?(sub_author.content)
     end
   end
 end
