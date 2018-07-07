@@ -3,10 +3,12 @@ class NotifyBooksController < ApplicationController
     user = User.find_by(token: params[:token])
     notify_books = user.notify_books.eager_load(:book)
     notify_books = notify_books.order('publish_date')
-    books = []
-    notify_books.each { |notify_book| books << notify_book.book }
+    json = []
+    notify_books.each do |notify_book|
+      json << ({ notify_book: notify_book, book: notify_book.book })
+    end
 
-    render json: books, status: :ok
+    render json: json, status: :ok
   end
 
   def destroy
