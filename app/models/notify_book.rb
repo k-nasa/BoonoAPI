@@ -3,7 +3,7 @@ class NotifyBook < ApplicationRecord
   belongs_to :user
   belongs_to :subscription_item
 
-  validates :book, presence: true, uniqueness: true
+  validates :book, presence: true
   validates :user, presence: true
   validates :subscription_item, presence: true
 
