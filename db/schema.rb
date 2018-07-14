@@ -19,11 +19,11 @@ ActiveRecord::Schema.define(version: 20180714031303) do
     t.date "publish_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "isbn", limit: 10
+    t.text "detail_url"
     t.string "publisher", limit: 50
+    t.text "big_image_url"
     t.text "synopsis"
     t.integer "amount"
-    t.text "big_image_url"
   end
 
   create_table "notify_books", force: :cascade do |t|
