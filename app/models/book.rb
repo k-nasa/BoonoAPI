@@ -4,8 +4,9 @@ class Book < ApplicationRecord
   validates :title, presence: true, uniqueness: { scope: :publish_date, message: '同じ本です' }
   validates :author, presence: true
   validates :publish_date, presence: true
-  validates :isbn, length: { maximum: 10 }
+  validates :detail_url, presence: true
 
+  before_save :set_book_details
   after_create :create_notify_book
 
   def create_notify_book
