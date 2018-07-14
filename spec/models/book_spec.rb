@@ -9,5 +9,6 @@ RSpec.describe Book, type: :model do
     it { is_expected.to validate_presence_of :title }
     it { is_expected.to validate_presence_of :publish_date }
     it { is_expected.to validate_uniqueness_of(:title).scoped_to(:publish_date) }
+    it { is_expected.to validate_length_of(:isbn).is_at_most(10) }
   end
 end
