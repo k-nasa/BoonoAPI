@@ -28,14 +28,18 @@ module BookInsert
         title_html.inner_text.strip
       end
 
+      urls = book_html.search('div.product-description-right a').map do |title_html|
+        title_html.values.first
+      end
+
       authors = book_html.search('div.product-description-right  p:nth-last-child(1)').map do |author_html|
         author_html.inner_text.strip
       end
 
       publish_date = Date.new(year, month, i + 1)
 
-      titles.zip(authors, image_urls).each do |title, author, image_url|
-        book_list << { title: title, author: author, publish_date: publish_date, image_url: image_url }
+      titles.zip(authors, image_urls, urls).each do |title, author, image_url, detail_url|
+        book_list << { title: title, author: author, publish_date: publish_date, image_url: image_url, detail_url: detail_url }
       end
     end
 
@@ -55,7 +59,9 @@ module BookInsert
     ]
 
     urls.each do |url|
-      fetch_books(url).map { |book| Book.create(book) }
+      fetch_books(url).map do |book|
+        Book.create(book)
+      end
     end
   end
 
