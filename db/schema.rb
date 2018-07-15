@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180714031303) do
+ActiveRecord::Schema.define(version: 20180715022331) do
 
   create_table "books", force: :cascade do |t|
     t.string "title", null: false
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20180714031303) do
     t.datetime "updated_at", null: false
     t.text "device_token"
     t.integer "book_id"
+    t.boolean "new_info", default: false, null: false
     t.index ["token"], name: "index_users_on_token", unique: true
   end
 
