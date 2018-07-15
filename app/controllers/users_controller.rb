@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     render json: e
   end
 
-  def new_info
+  def user_info
     user = User.find_by(token: params[:token])
     render json: user.new_info, status: :ok
   rescue => e
