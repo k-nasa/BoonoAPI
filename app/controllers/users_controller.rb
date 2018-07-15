@@ -13,4 +13,11 @@ class UsersController < ApplicationController
   rescue => e
     render json: e
   end
+
+  def new_info
+    user = User.find_by(token: params[:token])
+    render json: user.new_info, status: :ok
+  rescue => e
+    render json: e, status: :internal_server_error
+  end
 end

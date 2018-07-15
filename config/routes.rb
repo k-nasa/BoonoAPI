@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   get 'notify_books/:token' => 'notify_books#index'
   delete 'notify_books/:id' => 'notify_books#destroy'
+
+  get 'user_info/:token' => 'users#user_info'
 end
