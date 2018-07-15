@@ -8,6 +8,8 @@ class NotifyBooksController < ApplicationController
       json << ({ notify_book: notify_book, book: notify_book.book })
     end
 
+    user.update!(new_info: false)
+
     render json: json, status: :ok
   end
 
