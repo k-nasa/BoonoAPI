@@ -33,7 +33,7 @@ module BookInsert
       end
 
       authors = book_html.search('div.product-description-right  p:nth-last-child(1)').map do |author_html|
-        author_html.inner_text.strip
+        author_html.inner_text.delete(' ')
       end
 
       publish_date = Date.new(year, month, i + 1)
