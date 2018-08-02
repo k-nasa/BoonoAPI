@@ -28,8 +28,8 @@ module BookInsert
         title_html.inner_text.strip
       end
 
-      urls = book_html.search('div.product-description-right a').map do |title_html|
-        title_html.values.first
+      urls = book_html.search('div.product-description-right a').map do |url_html|
+        url_html.values.first
       end
 
       authors = book_html.search('div.product-description-right  p:nth-last-child(1)').map do |author_html|
