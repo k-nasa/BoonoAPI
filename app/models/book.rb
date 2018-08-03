@@ -22,10 +22,7 @@ class Book < ApplicationRecord
     self.amount = doc.css('#buyNewSection > div > div > span > span').inner_text.slice(/\d+/).to_i
     self.synopsis = doc.css('#productDescription > p').inner_text
 
-
-    options = Selenium::WebDriver::Chrome::Options.new
-    options.add_argument('--headless')
-    driver = Selenium::WebDriver.for :chrome, options: options
+    driver = Selenium::WebDriver.for :chrome
     driver.get(detail_url)
 
     # 画像ビューをクリックして表紙画像を表示させる
