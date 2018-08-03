@@ -38,6 +38,8 @@ class Book < ApplicationRecord
   rescue OpenURI::HTTPError
     sleep(1)
     set_book_details
+  rescue Net::ReadTimeout
+    logger.debug('TimeOut!!')
   end
 
   def create_notify_book
