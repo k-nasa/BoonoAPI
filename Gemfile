@@ -16,6 +16,9 @@ gem 'dotenv-rails'
 # Firebase Messaging Apiを叩く
 gem 'andpush'
 
+gem 'selenium-webdriver'
+gem 'chromedriver-helper'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
