@@ -35,8 +35,8 @@ class Book < ApplicationRecord
 
     # 要素が現れるまで待つ
     wait.until { driver.find_element(:id, 'igImage').displayed? }
-    self.big_image_url = driver.find_element(:css, '#igImage').attribute('src')
 
+    self.big_image_url = driver.find_element(:css, '#igImage').attribute('src')
   rescue OpenURI::HTTPError
     sleep(1)
     set_book_details
