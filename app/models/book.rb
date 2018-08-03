@@ -18,7 +18,6 @@ class Book < ApplicationRecord
     opt['User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36'
     doc = Nokogiri::HTML.parse(open(detail_url, opt))
 
-    self.big_image_url = image_url.gsub(/._SL160_/, '')
     self.publisher = doc.css('#dp-container > div:nth-child(27)> table > tr > td > div > ul > li:nth-child(2)').inner_text
     self.amount = doc.css('#buyNewSection > div > div > span > span').inner_text.slice(/\d+/).to_i
     self.synopsis = doc.css('#productDescription > p').inner_text
@@ -36,6 +35,9 @@ class Book < ApplicationRecord
     wait.until { driver.find_element(:id, 'igImage').displayed? }
 
     self.big_image_url = driver.find_element(:css, '#igImage').attribute('src')
+
+    self.big_image_url ||= image_url.gsub(/._SL160_/, '')
+
   rescue OpenURI::HTTPError
     sleep(1)
     set_book_details
