@@ -22,7 +22,8 @@ class Book < ApplicationRecord
     self.amount = doc.css('#buyNewSection > div > div > span > span').inner_text.slice(/\d+/).to_i
     self.synopsis = doc.css('#productDescription > p').inner_text
 
-    driver = Selenium::WebDriver.for :chrome
+    caps = Selenium::WebDriver::Remote::Capabilities.chrome('chromeOptions' => { binary: '/app/.apt/usr/bin/google-chrome', args: ['--headless'] })
+    driver = Selenium::WebDriver.for :chrome, desired_capabilities: caps
     driver.get(detail_url)
 
     # 画像ビューをクリックして表紙画像を表示させる
