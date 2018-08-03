@@ -41,6 +41,8 @@ class Book < ApplicationRecord
     set_book_details
   rescue Net::ReadTimeout
     logger.debug('TimeOut!!')
+  rescue
+    logger.debug('Error')
   end
 
   def create_notify_book
