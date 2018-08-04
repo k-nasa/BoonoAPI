@@ -45,6 +45,8 @@ class Book < ApplicationRecord
     driver.quit
 
     update!(big_image_url: big_image_url)
+  rescue
+    logger.debug('Error')
   end
 
   def create_notify_book
