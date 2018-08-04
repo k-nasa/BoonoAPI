@@ -22,19 +22,19 @@ class Book < ApplicationRecord
     self.amount = doc.css('#buyNewSection > div > div > span > span').inner_text.slice(/\d+/).to_i
     self.synopsis = doc.css('#productDescription > p').inner_text
 
-    caps = Selenium::WebDriver::Remote::Capabilities.chrome('chromeOptions' => { binary: '/app/.apt/usr/bin/google-chrome', args: ['--headless'] })
-    driver = Selenium::WebDriver.for :chrome, desired_capabilities: caps
-    driver.get(detail_url)
-
-    # 画像ビューをクリックして表紙画像を表示させる
-    driver.find_element(:css, '#imgThumbs > div').click
-
-    wait = Selenium::WebDriver::Wait.new(timeout: 5)
-
-    # 要素が現れるまで待つ
-    wait.until { driver.find_element(:id, 'igImage').displayed? }
-
-    self.big_image_url = driver.find_element(:css, '#igImage').attribute('src')
+    # caps = Selenium::WebDriver::Remote::Capabilities.chrome('chromeOptions' => { binary: '/app/.apt/usr/bin/google-chrome', args: ['--headless'] })
+    # driver = Selenium::WebDriver.for :chrome, desired_capabilities: caps
+    # driver.get(detail_url)
+    #
+    # # 画像ビューをクリックして表紙画像を表示させる
+    # driver.find_element(:css, '#imgThumbs > div').click
+    #
+    # wait = Selenium::WebDriver::Wait.new(timeout: 5)
+    #
+    # # 要素が現れるまで待つ
+    # wait.until { driver.find_element(:id, 'igImage').displayed? }
+    #
+    # self.big_image_url = driver.find_element(:css, '#igImage').attribute('src')
 
     self.big_image_url ||= image_url.gsub(/._SL160_/, '')
 
