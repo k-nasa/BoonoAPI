@@ -40,12 +40,13 @@ class Book < ApplicationRecord
     # 要素が現れるまで待つ
     wait.until { driver.find_element(:id, 'igImage').displayed? }
 
-    big_image_url = driver.find_element(:css, '#igImage').attribute('src')
+    image_url = driver.find_element(:css, '#igImage').attribute('src')
+    driver.close
     driver.quit
 
-    update!(big_image_url: big_image_url)
+    update!(big_image_url: image_url) if image_url
   rescue
-    logger.debug('Error')
+    driver.close
     driver.quit
   end
 
