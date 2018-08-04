@@ -44,6 +44,8 @@ class Book < ApplicationRecord
     big_image_url = driver.find_element(:css, '#igImage').attribute('src')
 
     update!(big_image_url: big_image_url)
+
+    driver.quit
   end
 
   def create_notify_book
