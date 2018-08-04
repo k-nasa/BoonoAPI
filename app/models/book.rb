@@ -9,7 +9,6 @@ class Book < ApplicationRecord
   validates :detail_url, presence: true
 
   before_save :set_book_details, if: -> { new_record? }
-  after_create :update_big_image_url, if: -> { persisted? }
   after_create :create_notify_book
 
   # HACK リファクタリングが必要
