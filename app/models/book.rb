@@ -23,7 +23,7 @@ class Book < ApplicationRecord
     self.synopsis = doc.css('#productDescription > p').inner_text
     self.big_image_url ||= image_url.gsub(/._SL160_/, '')
   rescue OpenURI::HTTPError
-    sleep(1)
+    sleep(2)
     set_book_details
   end
 
