@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180715022331) do
+ActiveRecord::Schema.define(version: 20180805090112) do
 
   create_table "books", force: :cascade do |t|
     t.string "title", null: false
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20180715022331) do
     t.text "big_image_url"
     t.text "synopsis"
     t.integer "amount"
+    t.boolean "is_update_big_image", default: false, null: false
   end
 
   create_table "notify_books", force: :cascade do |t|
