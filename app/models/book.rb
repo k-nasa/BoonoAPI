@@ -28,6 +28,8 @@ class Book < ApplicationRecord
   end
 
   def update_big_image_url
+    # update済みなら何もしない
+    return if is_update_big_image
     caps = Selenium::WebDriver::Remote::Capabilities.chrome('chromeOptions' => { binary: '/app/.apt/usr/bin/google-chrome', args: ['--headless'] })
     driver = Selenium::WebDriver.for :chrome, desired_capabilities: caps
     driver.get(detail_url)
@@ -44,6 +46,7 @@ class Book < ApplicationRecord
     driver.close
     driver.quit
 
+    update!(is_update_big_image: true)
     update!(big_image_url: image_url) if image_url
   rescue
     driver.close
