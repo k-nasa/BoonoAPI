@@ -14,6 +14,7 @@ class NotifyBook < ApplicationRecord
 
   def user_info_update
     return if user.new_info
+
     user.update!(new_info: true)
   end
 end
