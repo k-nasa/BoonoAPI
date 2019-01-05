@@ -1,5 +1,9 @@
 require 'open-uri'
 
+# FIXME 使ってないカラムが幾つかあるが残しておく
+# Amazonからのスクレイピングを将来することになったら頑張ってくれ〜
+# 並列でぶん回す必要があると思うけど
+
 class Book < ApplicationRecord
   has_many :notify_books, dependent: :destroy
 
