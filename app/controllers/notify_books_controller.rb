@@ -1,8 +1,10 @@
 class NotifyBooksController < ApplicationController
   def index
     user = User.find_by(token: params[:token])
+
     notify_books = user.notify_books.eager_load(:book)
     notify_books = notify_books.order('publish_date', 'title')
+
     json = []
     notify_books.each do |notify_book|
       json << ({ notify_book: notify_book, book: notify_book.book })

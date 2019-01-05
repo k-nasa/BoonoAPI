@@ -24,6 +24,7 @@ class SubscriptionItemsController < ApplicationController
     user = User.find_by(token: params[:token])
     sub_item = user.subscription_items.new(content: params[:content], type: params[:type], sub_id: params[:sub_id])
     sub_item.save!
+
     render json: 'success!', status: :ok
   rescue => e
     render json: e, status: :internal_server_error

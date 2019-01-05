@@ -1,19 +1,17 @@
 require 'open-uri'
 
 module BookInsert
-  # TODO いい感じに分割したい
   # https://calendar.gameiroiro.com/manga.php このサイトにのみ対応
-  # 余裕があればアマゾンから取得する
   def fetch_books(url)
     opt = {}
     opt['User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36'
     doc = Nokogiri::HTML.parse(open(url, opt))
 
-
     #  "2018年6月 漫画発売日一覧" のようなフォーマットになっている
     date = doc.xpath('//th[@id = "top-th"]').inner_text
 
-    date = date.match(/(\d*)年(\d+)月(\D*)/).to_a # ['2018年6月...',year, month, str]
+    # ['2018年6月...',year, month, str]というフォーマットに分割
+    date = date.match(/(\d*)年(\d+)月(\D*)/).to_a
 
     year = date[1].to_i
     month = date[2].to_i
@@ -48,7 +46,7 @@ module BookInsert
     book_list
   end
 
-  # ３ヶ月分の発売予定を保存する
+  # 先３ヶ月分の発売予定を保存する
   def save_three_month_books
     date = Time.zone.today
     urls = [
