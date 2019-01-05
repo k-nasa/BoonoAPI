@@ -15,11 +15,11 @@ class Book < ApplicationRecord
   after_create :create_notify_book
 
   def create_notify_book
-    TitleItem.each do |sub_title|
+    TitleItem.find_each do |sub_title|
       sub_title.user.notify_books.create(book: self, subscription_item: sub_title) if title.include?(sub_title.content)
     end
 
-    AuthorItem.each do |sub_author|
+    AuthorItem.find_each do |sub_author|
       sub_author.user.notify_books.create(book: self, subscription_item: sub_author) if author.include?(sub_author.content)
     end
   end
