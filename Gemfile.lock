@@ -41,7 +41,7 @@ GEM
     amazon-ecs (2.5.0)
       nokogiri (~> 1.4)
       ruby-hmac (~> 0.3)
-    andpush (0.2.0)
+    andpush (0.2.1)
       net-http-persistent (>= 3.0.0)
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
