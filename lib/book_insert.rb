@@ -59,8 +59,13 @@ module BookInsert
     ]
 
     urls.each do |url|
-      fetch_books(url).map do |book|
-        Book.create(book)
+      fetch_books(url).map do |book_hash|
+        book = Book.new(book_hash)
+
+        unless book.save
+          book = Book.find_by(title: book.title)
+          book.update!(book_hash)
+        end
       end
     end
   end
