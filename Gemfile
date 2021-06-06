@@ -8,7 +8,7 @@ end
 gem 'rails', '~> 5.1.6'
 gem 'sqlite3', group: :development
 gem 'pg', group: :production
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 5.3'
 # アマゾンapiを叩く
 gem 'amazon-ecs'
 # 環境変数を管理するため
